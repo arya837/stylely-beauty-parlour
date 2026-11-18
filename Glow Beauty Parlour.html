@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Glow Beauty Parlour</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbf4f3; --surface:#ffffff; --ink:#2f1a2e; --muted:#6e5a6b;
+  --plum:#4a2145; --rose:#b83b6e; --blush:#f3d9dc; --gold:#b9893c; --line:#ead8da;
+  --on-plum:#fbf4f3;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#1d0f1d; --surface:#2a172a; --ink:#f6e9ea; --muted:#c5adc2;
+    --plum:#3a1a38; --rose:#e0709d; --blush:#4a2a47; --gold:#d8aa5a; --line:#432943; --on-plum:#fbf4f3;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1d0f1d; --surface:#2a172a; --ink:#f6e9ea; --muted:#c5adc2;
+  --plum:#3a1a38; --rose:#e0709d; --blush:#4a2a47; --gold:#d8aa5a; --line:#432943; --on-plum:#fbf4f3; color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 "DM Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;line-height:1.1;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.logo{font:700 26px "Cormorant Garamond",Georgia,serif;text-decoration:none;color:var(--ink)}
+nav{display:flex;gap:22px;font-size:15px}
+nav a{text-decoration:none;color:var(--muted)} nav a:hover{color:var(--rose)}
+.btn{display:inline-block;background:var(--rose);color:#fff;border:0;border-radius:999px;padding:14px 28px;font:600 16px "DM Sans",sans-serif;text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;padding:56px 0 72px}
+.hero h1{font-size:clamp(44px,7vw,84px);letter-spacing:-.01em;color:var(--plum)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero h1{color:var(--ink)}}
+.hero p{max-width:46ch;color:var(--muted);font-size:19px;margin:22px 0 30px}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap}
+.mirror{aspect-ratio:3/4;border-radius:50% 50% 14px 14px/38% 38% 14px 14px;background:radial-gradient(circle at 35% 30%,var(--blush),var(--rose) 70%,var(--plum));display:grid;place-items:center;text-align:center;color:#fff;padding:30px;box-shadow:0 0 0 10px var(--bg),0 0 0 12px var(--gold);animation:rise .9s ease both}
+.mirror span{font:italic 600 clamp(26px,4vw,38px)/1.2 "Cormorant Garamond",Georgia,serif}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.mirror{animation:none}html{scroll-behavior:auto}}
+section{padding:64px 0}
+h2{font-size:clamp(34px,5vw,50px);color:var(--plum);margin-bottom:10px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) h2{color:var(--ink)}}
+.sub{color:var(--muted);max-width:52ch;margin:0 0 34px}
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:34px 56px}
+.menu h3{font-size:28px;color:var(--rose);border-bottom:1.5px solid var(--gold);padding-bottom:8px;margin-bottom:12px}
+.menu ul{list-style:none;margin:0;padding:0}
+.menu li{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px dotted var(--line)}
+.menu li b{font-weight:600;white-space:nowrap}
+.note{font-size:14px;color:var(--muted);margin-top:22px}
+.band{background:var(--plum);color:var(--on-plum)}
+.band h2{color:var(--on-plum)}
+.band .sub{color:#e6cfe0}
+.book{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+form{display:grid;gap:14px}
+label{display:grid;gap:6px;font-size:15px;font-weight:500}
+input,select{font:inherit;padding:13px 14px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);width:100%}
+.band form label{color:var(--on-plum)}
+.info{display:grid;gap:20px}
+.info h3{font-size:26px;color:var(--gold);margin-bottom:4px}
+.info p{margin:0}
+.hours{display:grid;grid-template-columns:auto 1fr;gap:4px 22px;margin:0}
+.hours dt{font-weight:600}.hours dd{margin:0}
+footer{padding:28px 0 40px;text-align:center;color:var(--muted);font-size:14px}
+@media (max-width:760px){
+  .hero,.book{grid-template-columns:1fr}
+  .mirror{max-width:300px;margin:0 auto;order:-1}
+  nav{display:none}
+  .hero{padding-top:20px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="#top">Glow</a>
+    <nav aria-label="Main">
+      <a href="#services">Services</a><a href="#book">Book</a><a href="#visit">Visit us</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div>
+        <h1>Look good. Feel even better.</h1>
+        <p>Glow Beauty Parlour offers haircuts, facials, bridal makeup and more, in a calm, clean space with friendly, experienced stylists.</p>
+        <div class="cta">
+          <a class="btn" href="#book">Book an appointment</a>
+          <a class="btn ghost" href="#services">See services and prices</a>
+        </div>
+      </div>
+      <div class="mirror" role="img" aria-label="Decorative mirror shape"><span>Your best self,<br>every day</span></div>
+    </div>
+  </main>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <h2>Services and prices</h2>
+    <p class="sub">Simple, clear prices. Final price may change slightly for longer hair or special products.</p>
+    <div class="menu">
+      <div>
+        <h3>Hair</h3>
+        <ul>
+          <li>Haircut <b>₹300</b></li>
+          <li>Hair spa <b>₹800</b></li>
+          <li>Hair colour <b>₹1,200</b></li>
+          <li>Blow dry and styling <b>₹400</b></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Skin</h3>
+        <ul>
+          <li>Cleanup <b>₹600</b></li>
+          <li>Fruit facial <b>₹900</b></li>
+          <li>Gold facial <b>₹1,500</b></li>
+          <li>De-tan treatment <b>₹700</b></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Hands and feet</h3>
+        <ul>
+          <li>Manicure <b>₹500</b></li>
+          <li>Pedicure <b>₹700</b></li>
+          <li>Threading (eyebrows) <b>₹50</b></li>
+          <li>Waxing (full arms) <b>₹350</b></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Bridal and party</h3>
+        <ul>
+          <li>Party makeup <b>₹2,500</b></li>
+          <li>Bridal makeup <b>₹12,000</b></li>
+          <li>Saree draping <b>₹500</b></li>
+          <li>Mehndi (per hand) <b>₹400</b></li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">Sample prices. Replace them with your own.</p>
+  </div>
+</section>
+
+<section id="book" class="band">
+  <div class="wrap book">
+    <div>
+      <h2>Book your visit</h2>
+      <p class="sub">Fill in the form and press the button. WhatsApp opens with your request ready to send, and we will confirm your time.</p>
+    </div>
+    <form id="bookForm">
+      <label>Your name <input id="name" required autocomplete="name"></label>
+      <label>Service
+        <select id="service">
+          <option>Haircut</option><option>Hair spa</option><option>Hair colour</option>
+          <option>Facial</option><option>Manicure / Pedicure</option><option>Threading / Waxing</option>
+          <option>Party or bridal makeup</option>
+        </select>
+      </label>
+      <label>Preferred date <input id="date" type="date" required></label>
+      <label>Preferred time
+        <select id="time"><option>Morning</option><option>Afternoon</option><option>Evening</option></select>
+      </label>
+      <button class="btn" type="submit">Send request on WhatsApp</button>
+    </form>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap">
+    <h2>Visit us</h2>
+    <p class="sub">Walk-ins are welcome, but booking saves you waiting.</p>
+    <div class="info" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+      <div>
+        <h3>Address</h3>
+        <p>12, Main Road, Your Area<br>Chennai, Tamil Nadu 600000</p>
+      </div>
+      <div>
+        <h3>Opening hours</h3>
+        <dl class="hours">
+          <dt>Mon to Sat</dt><dd>9:30 am to 8:30 pm</dd>
+          <dt>Sunday</dt><dd>10:00 am to 6:00 pm</dd>
+        </dl>
+      </div>
+      <div>
+        <h3>Call or message</h3>
+        <p><a href="tel:+910000000000">+91 00000 00000</a><br>
+        <a href="https://wa.me/910000000000">Chat on WhatsApp</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="yr">2026</span> Glow Beauty Parlour. All rights reserved.</footer>
+
+<script>
+(function(){
+  var NUMBER = "910000000000"; // replace with your WhatsApp number: country code + number, no + or spaces
+  document.getElementById("yr").textContent = new Date().getFullYear();
+  var d = document.getElementById("date");
+  d.min = new Date().toISOString().split("T")[0];
+  document.getElementById("bookForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    var msg = "Hello Glow Beauty Parlour, I would like to book an appointment.\n" +
+      "Name: " + document.getElementById("name").value + "\n" +
+      "Service: " + document.getElementById("service").value + "\n" +
+      "Date: " + d.value + "\n" +
+      "Time: " + document.getElementById("time").value;
+    window.open("https://wa.me/" + NUMBER + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
+  });
+})();
+</script>
+</body>
+</html>
